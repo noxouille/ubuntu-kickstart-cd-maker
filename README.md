@@ -6,7 +6,7 @@ This script lets you create a completely automated Ubuntu Server installation CD
 
 ## How does it do it?
 
-It downloads the installation CD ISO from the ubuntu file servers, remasters it with a [KickStart](http://fedoraproject.org/wiki/Anaconda/Kickstart) file, configures a few other files, and creates a new ISO file you can burn onto a disk.
+It downloads the official installation CD ISO from the ubuntu file servers, remasters it with a [KickStart](http://fedoraproject.org/wiki/Anaconda/Kickstart) file, configures a few other files, and creates a new ISO file you can burn onto a disk.
 
 Based on this [askubuntu.com thread](http://askubuntu.com/questions/122505/how-do-i-create-a-completely-unattended-install-of-ubuntu).
 
@@ -20,11 +20,11 @@ If you want another version, edit the script. (TODO: preload other distros/versi
 
 ## What is the default name and password?
 
-Default usename is user and password is 'p@ssw0rd!'. 
+Default usename is `user` and password is `p@ssw0rd!`. 
 
 ## What are the other files in this repo?
 
-3 Files are copied onto the CD image:
+3 files are copied onto the CD image:
 
 * `ks.cfg` - This is the kickstart configuration file. Either edit by hand, or use `system-config-kickstart`. Copied to the root directory of the image (`/`).
 * `isolinux.cfg` - Copied to /isolinux on the image. The only thing I changed from the default is to set the `timeout` value to 10 (instead of 0, which means no timeout) so that you don't have to select a language upon boot.
@@ -34,8 +34,7 @@ Default usename is user and password is 'p@ssw0rd!'.
  
 ## Why would I want to use a disk over network booting with PXE/TFTP/etc?
 
-For a small number of servers, or if you only occasionally deploy
-I you manage lots of deploy lots of servers, 
+CD installation does not depend on a central network boot server to be configured on the same network as the machine.  Also, I don't configure PXE/TFTP/DHCP often enough to be able to trouble-shoot them without googling.  Then again, I only manage a few dozen machines.
 
 ## How do I do XYZ?
 
