@@ -3,9 +3,10 @@
 # edit these 3 variables if you want to try another distro. create an md5sum
 # file with something like 
 #   md5sum $ISO > $ISO.MD5SUM
-ISO=ubuntu-12.04.3-server-amd64.iso
-OUTPUT=autoinstall-ubuntu-12.04.3-server-amd64.iso
-URL=http://releases.ubuntu.com/12.04/ubuntu-12.04.3-server-amd64.iso
+# P.S.: Not working with live-server image !!!
+ISO=ubuntu-18.04.2-server-amd64.iso
+OUTPUT=autoinstall-ubuntu-18.04.2-server-amd64.iso
+URL=http://releases.ubuntu.com/18.04.2/ubuntu-18.04.2-server-amd64.iso
 
 MOUNT=iso-mount-dir
 WORK=iso-work-dir
@@ -45,4 +46,3 @@ mkisofs -D -r -V “AUTOINSTALL” -cache-inodes -J -l -b isolinux/isolinux.bin 
 # clean up after ourselves
 sudo umount $MOUNT
 rm -rf $MOUNT $WORK
-

@@ -2,7 +2,9 @@
 
 ## What does this script do? 
 
-This script lets you create a completely automated Ubuntu Server installation CD (default:12.04.3 64 bit) that you can boot on any PC and have a working server in minutes without ever touching a keyboard.
+This script lets you create a completely automated Ubuntu Server installation CD (default:18.04.2 64 bit) that you can boot on any PC and have a working server in minutes without ever touching a keyboard.
+To do so, simply modify the `Requesting hostname` section.
+By default, you are required to enter the hostname for each installation.
 
 ## How does it do it?
 
@@ -12,7 +14,7 @@ Based on this [askubuntu.com thread](http://askubuntu.com/questions/122505/how-d
 
 ## How do I run it?
 
-If you're happy with Ubuntu server 12.04.3 64 bit, just download/clone the repository, chdir to it, and run the script:
+If you're happy with Ubuntu server 18.04.2 64 bit, just download/clone the repository, chdir to it, and run the script:
 
     ./make-automated-install-cd.sh
 
@@ -20,7 +22,7 @@ If you want another version, edit the script. (TODO: preload other distros/versi
 
 ## What is the default name and password?
 
-Default usename is `user` and password is `p@ssw0rd!`. 
+Default username is `user` and password is `pass`. 
 
 ## What are the other files in this repo?
 
@@ -30,7 +32,7 @@ Default usename is `user` and password is `p@ssw0rd!`.
 * `isolinux.cfg` - Copied to /isolinux on the image. The only thing I changed from the default is to set the `timeout` value to 10 (instead of 0, which means no timeout) so that you don't have to select a language upon boot.
 * `txt.cfg` - This is the file that contains that list boot options when you boot a Linux box.  You can set kernel boot parameters here.  Note that I added `ks=cdrom:/ks.cfg` to the params. Also copied to /isolinux on the image.
 
-`ubuntu-12.04.3-server-amd64.iso.MD5SUM` is the md5sum file for default ISO file which the script points to.  If you want to try a different distro, you'll need to download it manually, create a similar file with (`md5sum foobar.iso > foobar.iso.MD5SUM`) and edit the script accordingly.
+`*.MD5SUM` is the md5sum file for default ISO file which the script points to.  If you want to try a different distro, you'll need to download it manually, create a similar file with (`md5sum foobar.iso > foobar.iso.MD5SUM`) and edit the script accordingly.
  
 ## Why would I want to use a disk over network booting with PXE/TFTP/etc?
 
@@ -57,3 +59,10 @@ Because apparently, in order to extract an ISO file on linux, you need to mount 
 ## What is a preseed file?
 
 I'm not sure, but apparently you need to pass it to the kernel params along with the `ks.cfg` file.  There are default preseed files on the CD under the /preseed/ directory, and I use the `ubuntu-server.seed` file. Perhaps there are interesting things in there. 
+
+## Resources
+
+- https://wiki.dinfadom.com/index.php/Kickstart_-_Ubuntu_18.04_LTS
+- https://github.com/tnishimura/ubuntu-kickstart-cd-maker
+- https://gist.github.com/funzoneq/d77369203ea447dc3cc2
+- https://github.com/vrillusions/ubuntu-kickstart/blob/master/18.04/ks-1804-minimalphy.cfg
